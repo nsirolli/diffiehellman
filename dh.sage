@@ -7,9 +7,6 @@ class DiffieHellman():
         n = 10^(pdig-1)
         self._p = random_prime(10*n,lbound=n)
         self._g = mod(primitive_root(self._p),self._p)
-        global p; global g
-        p = self._p
-        g = self._g
 
     def privpub(self):
         a = randint(1,self._p)
@@ -58,10 +55,10 @@ class DiffieHellman():
         C = B^a
         return 1/C * c
 
-    def p(self):
+    def primo(self):
         return self._p
 
-    def g(self):
+    def base(self):
         return self._g
 
     def params(self):
@@ -69,3 +66,4 @@ class DiffieHellman():
 
     def __repr__(self):
         return "Protocolo Diffie-Hellman: el primo es %d y la base es %d" \
+                %(self._p,self._g)
